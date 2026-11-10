@@ -1,0 +1,5 @@
+name,district,choiceCode,branch,year,round,category,cutoffPercent
+"Government College of Engineering Pune",,GCP001,Computer Engineering,2023,CAP Round 1,OPEN,95.5
+"Walchand College of Engineering Sangli",Sangli,,Computer Engineering,2023,CAP Round 1,OPEN,93.5
+"College of Engineering Pune",Pune,COEP001,,2023,CAP Round 1,OPEN,96.2
+"Another College",Mumbai,VJTI001,Mechanical Engineering,,CAP Round 1,OBC,85.2

@@ -1,0 +1,8 @@
+name,district,choiceCode,branch,year,round,category,cutoffPercent
+"Government College of Engineering Pune",Pune,GCP001,Computer Engineering,2023,CAP Round 1,OPEN,95.5
+"College with Invalid Percentage",Mumbai,VJTI001,Computer Engineering,2023,CAP Round 1,OPEN,-10.5
+"Another College",Sangli,WCE001,Mechanical Engineering,2023,CAP Round 1,OBC,110.0
+"College with NaN",Pune,COEP001,Electronics Engineering,2023,CAP Round 1,SC,NaN
+"Valid College",Mumbai,VJTI002,Civil Engineering,2023,CAP Round 1,ST,75.8
+"College with Text Percentage",Pune,GCP002,Information Technology,2023,CAP Round 1,OPEN,invalid_text
+"Another Valid College",Sangli,WCE002,Computer Engineering,2023,CAP Round 1,OBC,88.5

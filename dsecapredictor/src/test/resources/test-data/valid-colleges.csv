@@ -1,0 +1,6 @@
+name,district,choiceCode,branch,year,round,category,cutoffPercent
+"Government College of Engineering Pune",Pune,GCP001,Computer Engineering,2023,CAP Round 1,OPEN,95.5
+"Walchand College of Engineering Sangli",Sangli,WCE002,Mechanical Engineering,2023,CAP Round 1,OBC,88.2
+"College of Engineering Pune",Pune,COEP003,Electronics Engineering,2022,CAP Round 2,SC,75.8
+"Veermata Jijabai Technological Institute Mumbai",Mumbai,VJTI004,Civil Engineering,2023,CAP Round 1,ST,70.5
+"Sardar Patel College of Engineering Mumbai",Mumbai,SPCE005,Information Technology,2022,CAP Round 3,OPEN,92.3

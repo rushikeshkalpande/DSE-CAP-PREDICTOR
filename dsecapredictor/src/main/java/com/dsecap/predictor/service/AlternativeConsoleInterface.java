@@ -1,0 +1,317 @@
+package com.dsecap.predictor.service;
+
+import com.dsecap.predictor.model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/**
+ * Alternative console interface using BufferedReader instead of Scanner
+ */
+@Component("alternativeConsoleInterface")
+public class AlternativeConsoleInterface {
+    
+    private final ValidationService validationService;
+    private final BufferedReader reader;
+    
+    @Autowired
+    public AlternativeConsoleInterface(ValidationService validationService) {
+        this.validationService = validationService;
+        this.reader = new BufferedReader(new InputStreamReader(System.in));
+    }
+    
+    /**
+     * Collects student input using BufferedReader
+     */
+    public Student collectStudentInput() throws IOException {
+        System.out.println("=== DSE College Predictor (Alternative Input) ===");
+        System.out.println("Please provide your details for college recommendations:\n");
+        
+        Double percentage = collectPercentage();
+        String branch = collectBranch();
+        String category = collectCategory();
+        String gender = collectGender();
+        String district = collectDistrict();
+        Boolean isPwd = collectPwdStatus();
+        
+        return Student.builder()
+                .percentage(percentage)
+                .branch(branch)
+                .category(category)
+                .gender(gender)
+                .district(district)
+                .isPwd(isPwd)
+                .build();
+    }
+    
+    private Double collectPercentage() throws IOException {
+        System.out.println("Examples: 85.5, 92.0, 78.25");
+        
+        while (true) {
+            System.out.print("Enter your final year percentage or CGPA (0-100): ");
+            System.out.flush();
+            
+            try {
+                String input = reader.readLine();
+                
+                if (input == null) {
+                    throw new IOException("End of input stream reached");
+                }
+                
+                input = input.trim();
+                if (input.isEmpty()) {
+                    System.out.println("❌ Please enter a value.");
+                    continue;
+                }
+                
+                try {
+                    Double percentage = Double.parseDouble(input);
+                    validationService.validatePercentage(percentage);
+                    System.out.println("✅ Percentage accepted: " + percentage);
+                    return percentage;
+                } catch (NumberFormatException e) {
+                    System.out.println("❌ Invalid number format. Please enter a valid decimal number (e.g., 85.5).");
+                } catch (ValidationException e) {
+                    System.out.println("❌ " + e.getMessage());
+                }
+            } catch (IOException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new IOException("Error reading input: " + e.getMessage(), e);
+            }
+        }
+    }
+    
+    private String collectBranch() throws IOException {
+        while (true) {
+            System.out.print("Enter your engineering branch (e.g., Computer Engineering): ");
+            System.out.flush();
+            
+            try {
+                String input = reader.readLine();
+                if (input == null) {
+                    throw new IOException("End of input stream reached");
+                }
+                
+                String branch = input.trim();
+                if (branch.isEmpty()) {
+                    System.out.println("❌ Please enter a branch name.");
+                    continue;
+                }
+                
+                try {
+                    validationService.validateBranch(branch);
+                    System.out.println("✅ Branch accepted: " + branch);
+                    return branch;
+                } catch (ValidationException e) {
+                    System.out.println("❌ " + e.getMessage());
+                }
+            } catch (IOException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new IOException("Error reading input: " + e.getMessage(), e);
+            }
+        }
+    }
+    
+    private String collectCategory() throws IOException {
+        System.out.println("Valid categories: " + String.join(", ", validationService.getValidCategories()));
+        
+        while (true) {
+            System.out.print("Enter your caste/category: ");
+            System.out.flush();
+            
+            try {
+                String category = reader.readLine();
+                if (category != null) {
+                    category = category.trim();
+                    try {
+                        validationService.validateCategory(category);
+                        System.out.println("✅ Category accepted: " + category);
+                        return category;
+                    } catch (ValidationException e) {
+                        System.out.println("❌ " + e.getMessage());
+                    }
+                }
+            } catch (IOException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new IOException("Error reading input: " + e.getMessage(), e);
+            }
+        }
+    }
+    
+    private String collectGender() throws IOException {
+        System.out.println("Valid options: " + String.join(", ", validationService.getValidGenders()));
+        
+        while (true) {
+            System.out.print("Enter your gender: ");
+            System.out.flush();
+            
+            try {
+                String gender = reader.readLine();
+                if (gender != null) {
+                    gender = gender.trim();
+                    try {
+                        validationService.validateGender(gender);
+                        System.out.println("✅ Gender accepted: " + gender);
+                        return gender;
+                    } catch (ValidationException e) {
+                        System.out.println("❌ " + e.getMessage());
+                    }
+                }
+            } catch (IOException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new IOException("Error reading input: " + e.getMessage(), e);
+            }
+        }
+    }
+    
+    private String collectDistrict() throws IOException {
+        while (true) {
+            System.out.print("Enter your home district/region: ");
+            System.out.flush();
+            
+            try {
+                String district = reader.readLine();
+                if (district != null) {
+                    district = district.trim();
+                    try {
+                        validationService.validateDistrict(district);
+                        System.out.println("✅ District accepted: " + district);
+                        return district;
+                    } catch (ValidationException e) {
+                        System.out.println("❌ " + e.getMessage());
+                    }
+                }
+            } catch (IOException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new IOException("Error reading input: " + e.getMessage(), e);
+            }
+        }
+    }
+    
+    private Boolean collectPwdStatus() throws IOException {
+        while (true) {
+            System.out.print("Are you a Person with Disability (PWD)? (true/false or yes/no): ");
+            System.out.flush();
+            
+            try {
+                String input = reader.readLine();
+                if (input != null) {
+                    input = input.trim().toLowerCase();
+                    
+                    try {
+                        Boolean isPwd;
+                        if ("true".equals(input) || "yes".equals(input) || "y".equals(input)) {
+                            isPwd = true;
+                        } else if ("false".equals(input) || "no".equals(input) || "n".equals(input)) {
+                            isPwd = false;
+                        } else {
+                            throw new ValidationException("Please enter 'true/false' or 'yes/no'");
+                        }
+                        
+                        validationService.validatePwdStatus(isPwd);
+                        System.out.println("✅ PWD status accepted: " + (isPwd ? "Yes" : "No"));
+                        return isPwd;
+                    } catch (ValidationException e) {
+                        System.out.println("❌ " + e.getMessage());
+                    }
+                }
+            } catch (IOException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new IOException("Error reading input: " + e.getMessage(), e);
+            }
+        }
+    }
+    
+    // ========== Display Methods ==========
+    
+    public void displayWelcomeMessage() {
+        System.out.println("╔══════════════════════════════════════════════════════════════╗");
+        System.out.println("║                    DSE College Predictor                    ║");
+        System.out.println("║              Direct Second Year Admission Helper            ║");
+        System.out.println("╚══════════════════════════════════════════════════════════════╝");
+        System.out.println();
+        System.out.println("Welcome! This tool helps diploma engineering students predict");
+        System.out.println("suitable colleges for Direct Second Year (DSE) admission based");
+        System.out.println("on historical cutoff data and your academic profile.");
+        System.out.println();
+    }
+    
+    public void displayLoadingMessage(String message) {
+        System.out.println("⏳ " + message + "...");
+    }
+    
+    public void displaySuccessMessage(String message) {
+        System.out.println("✅ " + message);
+    }
+    
+    public void displayRecommendations(java.util.List<com.dsecap.predictor.model.CollegeRecommendation> recommendations) {
+        if (recommendations == null || recommendations.isEmpty()) {
+            System.out.println("\n❌ No college matches found for your profile.");
+            System.out.println("\n💡 Suggestions:");
+            System.out.println("   • Try broadening your search criteria");
+            System.out.println("   • Consider alternative branches");
+            System.out.println("   • Check if your percentage is within typical ranges");
+            return;
+        }
+        
+        System.out.println("\n🎓 College Recommendations for Your Profile:");
+        System.out.println("═".repeat(80));
+        
+        for (int i = 0; i < recommendations.size(); i++) {
+            var rec = recommendations.get(i);
+            var college = rec.getCollege();
+            
+            System.out.printf("%2d. %s%n", i + 1, college.getName());
+            System.out.printf("    Branch: %s | District: %s%n", 
+                college.getBranch(), college.getDistrict());
+            System.out.printf("    Cutoff: %.1f%% (%d) | Confidence: %s%n", 
+                college.getCutoffPercent(), college.getYear(), rec.getConfidence());
+            System.out.printf("    Match Score: %.2f | Round: %s%n", 
+                rec.getMatchScore(), college.getRound());
+            
+            if (i < recommendations.size() - 1) {
+                System.out.println("    " + "─".repeat(60));
+            }
+        }
+        
+        System.out.println("═".repeat(80));
+        System.out.println("\n📊 Legend:");
+        System.out.println("   STRONG: High chance of admission");
+        System.out.println("   SAFE: Good chance of admission");
+        System.out.println("   STRETCH: Lower chance, but worth trying");
+    }
+    
+    public void displayCompletionMessage() {
+        System.out.println("\n🎯 Prediction Complete!");
+        System.out.println("\n💡 Next Steps:");
+        System.out.println("   1. Research the recommended colleges thoroughly");
+        System.out.println("   2. Check current admission requirements and deadlines");
+        System.out.println("   3. Prepare necessary documents for application");
+        System.out.println("   4. Consider visiting college websites for detailed information");
+        System.out.println("\n📞 For more assistance, contact the respective college admission offices.");
+        System.out.println("\nThank you for using DSE College Predictor! Good luck with your admissions! 🍀");
+    }
+    
+    public void displayErrorMessage(String message) {
+        System.out.println("❌ " + message);
+    }
+    
+    public void close() {
+        try {
+            if (reader != null) {
+                reader.close();
+            }
+        } catch (Exception e) {
+            System.err.println("Warning: Could not close reader properly");
+        }
+    }
+}

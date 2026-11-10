@@ -1,0 +1,39 @@
+name,district,choiceCode,branch,year,round,category,cutoffPercent
+"Government College of Engineering Pune",Pune,GCP001,Computer Engineering,2023,CAP Round 1,OPEN,95.5
+"Government College of Engineering Pune",Pune,GCP002,Mechanical Engineering,2023,CAP Round 1,OPEN,92.8
+"Government College of Engineering Pune",Pune,GCP003,Electronics Engineering,2023,CAP Round 1,OPEN,94.2
+"Government College of Engineering Pune",Pune,GCP011,Civil Engineering,2023,CAP Round 1,OPEN,89.5
+"Government College of Engineering Pune",Pune,GCP012,Information Technology,2023,CAP Round 1,OPEN,93.8
+"Walchand College of Engineering Sangli",Sangli,WCE001,Computer Engineering,2023,CAP Round 1,OPEN,93.5
+"Walchand College of Engineering Sangli",Sangli,WCE002,Mechanical Engineering,2023,CAP Round 1,OPEN,89.2
+"Walchand College of Engineering Sangli",Sangli,WCE003,Civil Engineering,2023,CAP Round 1,OPEN,85.8
+"Walchand College of Engineering Sangli",Sangli,WCE011,Electronics Engineering,2023,CAP Round 1,OPEN,88.5
+"College of Engineering Pune",Pune,COEP001,Computer Engineering,2023,CAP Round 1,OPEN,96.2
+"College of Engineering Pune",Pune,COEP002,Electronics Engineering,2023,CAP Round 1,OPEN,94.8
+"College of Engineering Pune",Pune,COEP003,Information Technology,2023,CAP Round 1,OPEN,95.8
+"College of Engineering Pune",Pune,COEP011,Mechanical Engineering,2023,CAP Round 1,OPEN,91.5
+"Veermata Jijabai Technological Institute Mumbai",Mumbai,VJTI001,Computer Engineering,2023,CAP Round 1,OPEN,97.2
+"Veermata Jijabai Technological Institute Mumbai",Mumbai,VJTI002,Electronics Engineering,2023,CAP Round 1,OPEN,95.5
+"Veermata Jijabai Technological Institute Mumbai",Mumbai,VJTI003,Mechanical Engineering,2023,CAP Round 1,OPEN,93.8
+"Veermata Jijabai Technological Institute Mumbai",Mumbai,VJTI011,Information Technology,2023,CAP Round 1,OPEN,96.8
+"Government College of Engineering Pune",Pune,GCP004,Computer Engineering,2023,CAP Round 1,OBC,88.5
+"Government College of Engineering Pune",Pune,GCP005,Mechanical Engineering,2023,CAP Round 1,OBC,85.2
+"Government College of Engineering Pune",Pune,GCP013,Electronics Engineering,2023,CAP Round 1,OBC,87.2
+"Government College of Engineering Pune",Pune,GCP014,Civil Engineering,2023,CAP Round 1,OBC,82.5
+"Walchand College of Engineering Sangli",Sangli,WCE004,Computer Engineering,2023,CAP Round 1,OBC,86.8
+"Walchand College of Engineering Sangli",Sangli,WCE005,Civil Engineering,2023,CAP Round 1,OBC,78.5
+"Walchand College of Engineering Sangli",Sangli,WCE012,Mechanical Engineering,2023,CAP Round 1,OBC,82.2
+"College of Engineering Pune",Pune,COEP004,Computer Engineering,2023,CAP Round 1,OBC,89.2
+"College of Engineering Pune",Pune,COEP012,Electronics Engineering,2023,CAP Round 1,OBC,87.8
+"Veermata Jijabai Technological Institute Mumbai",Mumbai,VJTI012,Computer Engineering,2023,CAP Round 1,OBC,90.2
+"Government College of Engineering Pune",Pune,GCP006,Computer Engineering,2023,CAP Round 1,SC,75.8
+"Government College of Engineering Pune",Pune,GCP007,Mechanical Engineering,2023,CAP Round 1,SC,72.5
+"Government College of Engineering Pune",Pune,GCP015,Electronics Engineering,2023,CAP Round 1,SC,74.2
+"Walchand College of Engineering Sangli",Sangli,WCE006,Computer Engineering,2023,CAP Round 1,SC,74.2
+"Walchand College of Engineering Sangli",Sangli,WCE013,Civil Engineering,2023,CAP Round 1,SC,68.5
+"College of Engineering Pune",Pune,COEP005,Computer Engineering,2023,CAP Round 1,SC,76.8
+"Veermata Jijabai Technological Institute Mumbai",Mumbai,VJTI004,Computer Engineering,2023,CAP Round 1,SC,78.5
+"Government College of Engineering Pune",Pune,GCP008,Computer Engineering,2023,CAP Round 1,ST,68.5
+"Government College of Engineering Pune",Pune,GCP009,Mechanical Engineering,2023,CAP Round 1,ST,65.2
+"Walchand College of Engineering Sangli",Sangli,WCE007,Computer Engineering,2023,CAP Round 1,ST,67.2
+"College of Engineering Pune",Pune,COEP006,Computer Engineering,2023,CAP Round 1,ST,69.8

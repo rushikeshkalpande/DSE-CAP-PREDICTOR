@@ -1,0 +1,7 @@
+name,district,choiceCode,branch,year,round,category,cutoffPercent
+"Valid College",Pune,VC001,Computer Engineering,2023,CAP Round 1,OPEN,95.5
+"Missing Fields",Pune,MF002,Mechanical Engineering
+"Invalid Year",Mumbai,IY003,Electronics Engineering,invalid_year,CAP Round 1,OPEN,88.5
+"Invalid Percentage",Delhi,IP004,Civil Engineering,2023,CAP Round 2,OBC,150.0
+"Empty Required Field",,ER005,Information Technology,2022,CAP Round 1,SC,85.2
+"Negative Percentage",Nashik,NP006,Computer Engineering,2023,CAP Round 1,OPEN,-5.0
